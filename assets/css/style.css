@@ -62,13 +62,18 @@
     opacity: .2;
 }
 
-#jogador #jogador-escolha a:hover, #computador #computador-escolha a:hover{
+#jogador #jogador-escolha a:hover,
+#jogador #jogador-escolha a.selecionado,
+#computador #computador-escolha a.selecionado{
     opacity: 1;
 }
 
 #jogador #jogador-escolha img, #computador #computador-escolha img{
-    cursor: pointer;
     max-width: 80px;
+}
+
+#jogador #jogador-escolha img{
+    cursor: pointer;
 }
 
 #versus{

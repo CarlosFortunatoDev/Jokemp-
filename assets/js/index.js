@@ -55,12 +55,23 @@ const somarPontoComputador = () => {
     document.querySelector('#computador-pontos').innerHTML = computadorPontos
 }
 
+const selecionar = (tipo, escolha) =>{
+    document.querySelector(`#${tipo}-escolha-${escolha}`).classList.add('selecionado')
+}
+
+const deselecionar = (tipo, escolha) =>{
+    document.querySelector(`#${tipo}-escolha-${escolha}`).classList.remove('selecionado')
+}
+
 // Jogada do usuário:  1)Pedra  2)Papel  3)Tesoura
 const jogar = (escolha) => {
     jogadorEscolha = escolha
+    selecionar('jogador', jogadorEscolha)
 
     //Sortear jogadada do computador.
     computadorEscolha = sortear(1,3)
+    selecionar('computador', computadorEscolha)
+
     let ganhador = verificarEscolha(jogadorEscolha, computadorEscolha)
     if (ganhador == 0) {
         mensagem('Empate')
