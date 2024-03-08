@@ -2,6 +2,16 @@ let jogadorNome;
 let computadorEscolha;
 let jogadorEscolha;
 
+//Exibe mensagem no console
+const mensagem = (texto) =>{
+    document.querySelector('#mensagem').innerHTML = texto;
+}
+
+//Define nome do jogador
+const definirNomeJogador = (nome) =>{
+    document.querySelector('#jogador-nome').innerHTML = nome
+} 
+
 const sortear = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1) + min)
 }
@@ -36,7 +46,13 @@ const jogar = (escolha) => {
     //Sortear jogadada do computador
     computadorEscolha = sortear(1,3)
     let ganhador = verificarEscolha(jogadorEscolha, computadorEscolha)
-
+    if (ganhador = 0) {
+        mensagem('Empate')
+    } else if (ganhador = 1) {
+        mensagem('Jogador')
+    } else if (ganhador = 2) {
+        mensagem('Computador')
+    }
     
     //Validar quem ganhou
 
@@ -49,7 +65,7 @@ document.querySelector('#jogador-escolha-1').onclick = () => {jogar(1)}
 document.querySelector('#jogador-escolha-2').onclick = () => {jogar(2)}
 document.querySelector('#jogador-escolha-3').onclick = () => {jogar(3)}
 
-// jogadorNome = prompt('Qual é o seu nome?')
-// document.querySelector('#jogador-nome').innerHTML = jogadorNome
+jogadorNome = prompt('Qual é o seu nome?')
+definirNomeJogador(jogadorNome)
 
-// document.querySelector('#mensagem').innerHTML = `Bem vindo ${jogadorNome}, está preparado? Escolha uma opção acima`
+mensagem(`Bem vindo ${jogadorNome}, está preparado? Escolha uma opção acima`)
