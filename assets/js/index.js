@@ -82,12 +82,12 @@ const jogar = (escolha) => {
         mensagem('Ponto para Computador')
         somarPontoComputador()
     }
-    
-    //Validar quem ganhou
 
-    //Somar ponto
-
-    //Exibir para o usuário
+    setTimeout(() => {
+        deselecionar('jogador', jogadorEscolha)
+        deselecionar('computador', computadorEscolha)
+        mensagem(`${jogadorNome} escolha uma opção`)
+    }, 3500)
 }
 
 document.querySelector('#jogador-escolha-1').onclick = () => {jogar(1)}
