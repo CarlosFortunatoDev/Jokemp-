@@ -1,17 +1,21 @@
 let jogadorNome;
-let computadorEscolha;
-let jogadorEscolha;
+let jogadorEscolha = 0;
+let jogadorPontos = 0
 
-//Exibe mensagem no console
+let computadorEscolha = 0;
+let computadorPontos = 0
+
+//Exibe mensagem no console.
 const mensagem = (texto) =>{
     document.querySelector('#mensagem').innerHTML = texto;
 }
 
-//Define nome do jogador
+//Define nome do jogador.
 const definirNomeJogador = (nome) =>{
     document.querySelector('#jogador-nome').innerHTML = nome
 } 
 
+// Sorteia entre dois números.
 const sortear = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1) + min)
 }
@@ -39,19 +43,33 @@ const verificarEscolha = (jogador, computador) => {
     } 
 }
 
+//Soma pontos para o jogador
+const somarPontoJogador = () => {
+    jogadorPontos ++;
+    document.querySelector('#jogador-pontos').innerHTML = jogadorPontos
+}
+
+//Soma pontos para o jogador
+const somarPontoComputador = () => {
+    computadorPontos ++;
+    document.querySelector('#computador-pontos').innerHTML = computadorPontos
+}
+
 // Jogada do usuário:  1)Pedra  2)Papel  3)Tesoura
 const jogar = (escolha) => {
     jogadorEscolha = escolha
 
-    //Sortear jogadada do computador
+    //Sortear jogadada do computador.
     computadorEscolha = sortear(1,3)
     let ganhador = verificarEscolha(jogadorEscolha, computadorEscolha)
-    if (ganhador = 0) {
+    if (ganhador == 0) {
         mensagem('Empate')
-    } else if (ganhador = 1) {
-        mensagem('Jogador')
-    } else if (ganhador = 2) {
-        mensagem('Computador')
+    } else if (ganhador == 1) {
+        mensagem(`Ponto para ${jogadorNome}`)
+        somarPontoJogador()
+    } else if (ganhador == 2) {
+        mensagem('Ponto para Computador')
+        somarPontoComputador()
     }
     
     //Validar quem ganhou
